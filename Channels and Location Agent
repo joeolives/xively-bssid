@@ -39,6 +39,13 @@ class Xively.Client {
 		local request = http.put(url, headers, feed.ToJson());
 
 		return request.sendsync();
+	
+	function PutLocation(location){
+		local url = "https://api.xively.com/v2/feeds/" + location.FeedID + ".json";
+		local headers = { "X-ApiKey" : ApiKey, "Content-Type":"application/json", "User-Agent" : "Xively-Imp-Lib/1.0" };
+		local request = http.put(url, headers, location.ToJson());
+
+		return request.sendsync();
 	}
 
 	/*****************************************

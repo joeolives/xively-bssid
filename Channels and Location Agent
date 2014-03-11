@@ -170,12 +170,12 @@ function postToXively(data, channel) {
     local resp = xivelyClient.Put(xivelyFeed);
     server.log("Posted to Xively: "+data+", got return code: "+resp.statuscode+", msg: "+resp.body);
 }
-APIKEY <- "API Key here";
-client <- Xively.Client(APIKEY);
+//APIKEY <- "API Key here";
+client <- Xively.Client(XIVELY_API_KEY);
 
 function setLocation(ele, lat, lon) {
     server.log("sending to Xively");
-    location <- Xively.Location("Feed ID here");
+    location <- Xively.Location(XIVELY_FEED_ID);
     location.Set("mobile", "your city", "outdoor", "physical", ele, lat, lon)
     client.PutLocation(location);
     //xivelyClient.PutLocation(location);

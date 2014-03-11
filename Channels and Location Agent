@@ -9,7 +9,7 @@ const XIVELY_FEED_ID = "Feed ID here";
 const XIVELYCHANNEL1 = "Temperatura";
 const XIVELYCHANNEL2 = "SignalStrength";
 const XIVELYCHANNEL3 = "BatteryVoltage";
-//const XIVELYCHANNEL4 = "Where";
+
 Xively <- {};  // this makes a 'namespace'
 
 /* CLASS AND GLOBAL FUNCTION DEFINITIONS -------------------------------------*/
@@ -191,10 +191,6 @@ device.on("BatteryVoltage", function(BatteryVoltage) {
   postToXively(BatteryVoltage, XIVELYCHANNEL3);
 });
 
-//device.on("Where", function(Where) {
-  //server.log(Where)
-//postToXively(Where, XIVELYCHANNEL4);
-//});
 
 device.on ("bssid", function(data) {
    setLocation(0, data.lat, data.lon); 
@@ -209,6 +205,6 @@ xivelyClient <- Xively.Client(XIVELY_API_KEY);
 //Display sensor data on Agent URL
 function httpHandler (req, resp) {
   server.log("Agent got a request");
-  resp.send(200, "Temperatura" + "SignalStrength" + "BatteryVoltage" + "Where");
+  resp.send(200, "Temperatura" + "SignalStrength" + "BatteryVoltage");
 }
 http.onrequest(httpHandler);
